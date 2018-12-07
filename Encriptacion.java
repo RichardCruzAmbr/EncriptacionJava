@@ -44,7 +44,7 @@ public class Encriptacion {
 	    byte[] BytesEncriptados = null;
 		 try{
 			 byte[] key = (KEY).getBytes("UTF-8");
-			 key = Arrays.copyOf(key, 32); // Asignamos tamaño de la llave
+			 key = Arrays.copyOf(key, 16); // Asignamos tamaño de la llave
 			 Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding"); // Instanciamos el algoritmo de cifrado que utilizaremos
 			 SecretKeySpec llave = new SecretKeySpec(key, "AES"); // Instanciamos la llave a utilizar 
 			 cipher.init(Cipher.ENCRYPT_MODE, llave, new IvParameterSpec(IV.getBytes("UTF-8"))); // Inicializa este cifrado con la clave pública del certificado dado.
@@ -74,7 +74,7 @@ public class Encriptacion {
 	 */
 	public String desencriptar(byte[] textoEncriptado) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, UnsupportedEncodingException {
 		byte[] key = (KEY).getBytes("UTF-8");
-		key = Arrays.copyOf(key, 32); // Asignamos tamaño de la llave
+		key = Arrays.copyOf(key, 16); // Asignamos tamaño de la llave
 		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding"); // Instanciamos el algoritmo de cifrado que utilizaremos
 		SecretKeySpec llave = new SecretKeySpec(key, "AES");  // Instanciamos la llave a utilizar 
 		cipher.init(Cipher.DECRYPT_MODE, llave,new IvParameterSpec(IV.getBytes("UTF-8"))); // Inicializa este cifrado con la clave pública del certificado dado.
